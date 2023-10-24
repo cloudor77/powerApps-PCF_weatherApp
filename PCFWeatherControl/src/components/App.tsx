@@ -58,7 +58,6 @@ export const AppWeatherAPI = () => {
       }
 
       const data = await response.json();
-      console.log(data);
       return setWeatherForecast(data.daily.data);
     };
 
@@ -68,7 +67,27 @@ export const AppWeatherAPI = () => {
   return (
     <div style={appLayout}>
       <Title />
-      <AppWeatherApiBox weatherApiData={weatherForecast} />
+      <div style={boxesLayout}>
+        {weatherForecast.slice(0, 5).map(
+          (
+            w: {
+              temperature: string;
+              day: string;
+              weather: string;
+              all_day: { icon: number; temperature: number };
+            },
+            i
+          ) => (
+            <AppWeatherApiBox
+              key={i}
+              date={w.day}
+              weather={w.weather}
+              icon={w.all_day.icon}
+              temp={w.all_day.temperature}
+            />
+          )
+        )}
+      </div>
     </div>
   );
 };

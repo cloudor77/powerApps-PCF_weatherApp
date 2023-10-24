@@ -17,7 +17,6 @@ import {
 } from "@fluentui/react-icons";
 
 export const cloudyDay = <WeatherCloudy48Regular key="whatever" />;
-console.log(cloudyDay);
 
 const iconsSharedStyles: React.CSSProperties = {
   width: "60px",
