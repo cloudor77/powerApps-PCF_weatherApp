@@ -67,12 +67,12 @@ export class PCFWeatherControl
   ): React.ReactElement {
     this._weatherData = this.generateWeatherData();
     //↓↓↓↓↓↓↓↓↓↓↓ Uncomment Out the return statement below (line 70) and Comment out the return statement on line (line 75)  React.createElement(AppApi) line to see static data ↓↓↓↓↓↓↓↓↓↓↓
-    return React.createElement(App, { weatherData: this._weatherData });
+    // return React.createElement(App, { weatherData: this._weatherData });
 
     // Either has to active and uncommented out in order to work - if both are commented out it will ultimately lead to app crash
 
     // ↓↓↓↓↓↓↓↓↓↓↓ Comment out the return statement above (line 70) and uncomment out the return statement below (line 75)  to see Real API Data - meteosource  ↓↓↓↓↓↓↓↓↓↓↓
-    // return React.createElement(AppWeatherAPI);
+    return React.createElement(AppWeatherAPI);
   }
 
   /**

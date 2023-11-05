@@ -6,12 +6,16 @@ const titleStyles: React.CSSProperties = {
   fontSize: FontSizes.size42,
 };
 
-const Title = () => {
+interface isApiOn {
+  apiOn: boolean;
+}
+
+export const Title = (props: isApiOn) => {
   return (
     <div>
-      <h1 style={titleStyles}>Weather Forecast App</h1>
+      <h1 style={titleStyles}>
+        {!props.apiOn ? "Weather Forecast App API ON" : "Weather Forecast App"}
+      </h1>
     </div>
   );
 };
-
-export default Title;

@@ -17,6 +17,7 @@ import {
 } from "@fluentui/react-icons";
 
 export const cloudyDay = <WeatherCloudy48Regular key="whatever" />;
+console.log(cloudyDay);
 
 const iconsSharedStyles: React.CSSProperties = {
   width: "60px",
@@ -46,7 +47,7 @@ const partlyCloudyStyles: React.CSSProperties = {
   color: SharedColors.gray10,
 };
 
-const iconMap = {
+const iconsMap = {
   Cloudy: (
     <WeatherCloudy48Regular
       key={uuidv4()}
@@ -80,13 +81,13 @@ const iconMap = {
 };
 
 export const pickRightIcon = (icon: any) => {
-  const rightIcon = Object.values(WeatherType);
-  const iconMapValues = Object.values(iconMap);
+  const weatherEnumType = Object.values(WeatherType);
+  const iconMapValues = Object.values(iconsMap);
 
-  const icons = rightIcon.map((m, i) => {
+  const rightIcon = weatherEnumType.map((m, i) => {
     if (icon === m) {
       return iconMapValues[i];
     }
   });
-  return icons;
+  return rightIcon;
 };

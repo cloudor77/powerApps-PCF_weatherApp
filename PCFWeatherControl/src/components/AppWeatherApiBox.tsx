@@ -1,5 +1,7 @@
 import React = require("react");
 
+import "./apiboxanimation.css";
+
 import {
   Depths,
   FontSizes,
@@ -74,16 +76,9 @@ export interface ApiWeatherProps {
   icon: number;
 }
 
-export interface ApiWeatherProps {
-  date: string;
-  weather: string;
-  temp: number;
-  icon: number;
-}
-
 export const AppWeatherApiBox = (props: ApiWeatherProps) => {
   return (
-    <div style={weatherBoxStyles}>
+    <div style={weatherBoxStyles} className="apiBox">
       <header style={headerStyles}>
         <h4 style={headerTextStyles}>{getWeekday(new Date(props.date))}</h4>
         <p>{getFormattedDate("cs", new Date(props.date))} </p>

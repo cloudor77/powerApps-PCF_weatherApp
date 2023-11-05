@@ -5,7 +5,7 @@ import { Depths } from "@fluentui/react/lib/Theme";
 
 import { WeatherBox } from "./WeatherBox";
 import { AppWeatherApiBox } from "./AppWeatherApiBox";
-import Title from "./Title";
+import { Title } from "./Title";
 
 import { METEO_API_KEY } from "../api/api";
 
@@ -46,6 +46,7 @@ export interface WeatherPropsData {
 
 export const AppWeatherAPI = () => {
   const [weatherForecast, setWeatherForecast] = useState<any[]>([]);
+  const [isAPIRunning, setIsAPIRunning] = useState<boolean>(false);
 
   useEffect(() => {
     const fetchWeatherData = async () => {
@@ -58,15 +59,22 @@ export const AppWeatherAPI = () => {
       }
 
       const data = await response.json();
+      console.log(data.daily.data);
       return setWeatherForecast(data.daily.data);
     };
 
     fetchWeatherData();
   }, []);
 
+  useEffect(() => {
+    if (weatherForecast.length > 0) {
+      setIsAPIRunning(true);
+    }
+  }, []);
+
   return (
     <div style={appLayout}>
-      <Title />
+      <Title apiOn={isAPIRunning} />
       <div style={boxesLayout}>
         {weatherForecast.slice(0, 5).map(
           (
@@ -92,10 +100,10 @@ export const AppWeatherAPI = () => {
   );
 };
 
-export const App: React.FC<WeatherPropsData> = ({ weatherData }) => {
+export const App: React.FC<WeatherPropsData> = ({ weatherData }: any) => {
   return (
     <div style={appLayout}>
-      <Title />
+      <Title apiOn={true} />
       <div style={boxesLayout}>
         <WeatherBox weatherData={weatherData} />
       </div>

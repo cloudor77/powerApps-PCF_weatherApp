@@ -66,7 +66,7 @@ export interface WeatherBoxWeatherData {
 }
 export const WeatherBox: React.FC<WeatherBoxWeatherData> = ({
   weatherData,
-}) => {
+}: WeatherBoxWeatherData) => {
   const WeatherBoxContent = weatherData.map((w, i) => (
     <div key={i} style={weatherBoxStyles}>
       <header style={headerStyles}>
